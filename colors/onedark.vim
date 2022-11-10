@@ -10,7 +10,7 @@
 "  * https://github.com/joshdick/onedark.vim#vim-airline-theme
 "  * https://github.com/joshdick/onedark.vim/tree/main/term
 
-" Color Reference {{{
+" Color Reference
 
 " The following colors were measured inside Atom using its built-in inspector.
 
@@ -42,9 +42,9 @@
 " | Comment Grey | rgb(92, 99, 112)   | #5c6370 |
 " +---------------------------------------------+
 
-" }}}
+"
 
-" Initialization {{{
+" Initialization
 
 highlight clear
 
@@ -120,7 +120,7 @@ function! s:h(group, style, ...)
     \ "cterm="   (has_key(s:highlight, "cterm") ? s:highlight.cterm    : "NONE")
 endfunction
 
-" public {{{
+" public
 
 function! onedark#set_highlight(group, style)
   call s:h(a:group, a:style)
@@ -130,11 +130,11 @@ function! onedark#extend_highlight(group, style)
   call s:h(a:group, a:style, 1)
 endfunction
 
-" }}}
+"
 
-" }}}
+"
 
-" Color Variables {{{
+" Color Variables
 
 let s:colors = onedark#GetColors()
 
@@ -158,9 +158,9 @@ let s:menu_grey = s:colors.menu_grey
 let s:special_grey = s:colors.special_grey
 let s:vertsplit = s:colors.vertsplit
 
-" }}}
+"
 
-" Terminal Colors {{{
+" Terminal Colors
 
 if has('nvim')
   let g:terminal_color_0 = s:black.gui
@@ -188,9 +188,9 @@ else
   \]
 endif
 
-" }}}
+"
 
-" Syntax Groups (descriptions and ordering from `:h w18`) {{{
+" Syntax Groups (descriptions and ordering from `:h w18`)
 
 call s:h("Comment", { "fg": s:comment_grey, "gui": "italic", "cterm": "italic" }) " any comment
 call s:h("Constant", { "fg": s:cyan }) " any constant
@@ -228,9 +228,9 @@ call s:h("Ignore", {}) " left blank, hidden
 call s:h("Error", { "fg": s:red }) " any erroneous construct
 call s:h("Todo", { "fg": s:purple }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-" }}}
+"
 
-" Highlighting Groups (descriptions and ordering from `:h highlight-groups`) {{{
+" Highlighting Groups (descriptions and ordering from `:h highlight-groups`)
 call s:h("ColorColumn", { "bg": s:cursor_grey }) " used for the columns set with 'colorcolumn'
 call s:h("Conceal", {}) " placeholder characters substituted for concealed text (see 'conceallevel')
 call s:h("Cursor", { "fg": s:black, "bg": s:blue }) " the character under the cursor
@@ -290,17 +290,17 @@ call s:h("VisualNOS", { "bg": s:visual_grey }) " Visual mode selection when vim 
 call s:h("WarningMsg", { "fg": s:yellow }) " warning messages
 call s:h("WildMenu", { "fg": s:black, "bg": s:blue }) " current match in 'wildmenu' completion
 
-" }}}
+"
 
-" Termdebug highlighting for Vim 8.1+ {{{
+" Termdebug highlighting for Vim 8.1+
 
 " See `:h hl-debugPC` and `:h hl-debugBreakpoint`.
 call s:h("debugPC", { "bg": s:special_grey }) " the current position
 call s:h("debugBreakpoint", { "fg": s:black, "bg": s:red }) " a breakpoint
 
-" }}}
+"
 
-" Language-Specific Highlighting {{{
+" Language-Specific Highlighting
 
 " CSS
 call s:h("cssAttrComma", { "fg": s:purple })
@@ -564,9 +564,9 @@ call s:h("xmlEndTag", { "fg": s:red })
 call s:h("xmlTag", { "fg": s:red })
 call s:h("xmlTagName", { "fg": s:red })
 
-" }}}
+"
 
-" Plugin Highlighting {{{
+" Plugin Highlighting
 
 " airblade/vim-gitgutter
 call s:h("GitGutterAdd", { "fg": s:green })
@@ -631,9 +631,9 @@ call s:h("LspHintHighlight", { "fg":s:cyan, "gui": "underline", "cterm": "underl
 call s:h("diffAdded", { "fg": s:green })
 call s:h("diffRemoved", { "fg": s:red })
 
-" }}}
+"
 
-" Git Highlighting {{{
+" Git Highlighting
 
 call s:h("gitcommitComment", { "fg": s:comment_grey })
 call s:h("gitcommitUnmerged", { "fg": s:green })
@@ -657,12 +657,12 @@ hi link gitcommitDiscardedArrow gitcommitDiscardedFile
 hi link gitcommitSelectedArrow gitcommitSelectedFile
 hi link gitcommitUnmergedArrow gitcommitUnmergedFile
 
-" }}}
+"
 
-" Neovim-Specific Highlighting {{{
+" Neovim-Specific Highlighting
 
 if has("nvim")
-  " Neovim terminal colors {{{
+  " Neovim terminal colors
   let g:terminal_color_0 =  s:black.gui
   let g:terminal_color_1 =  s:red.gui
   let g:terminal_color_2 =  s:green.gui
@@ -681,20 +681,16 @@ if has("nvim")
   let g:terminal_color_15 = s:comment_grey.gui
   let g:terminal_color_background = s:background.gui
   let g:terminal_color_foreground = s:foreground.gui
-  " }}}
+  "
 
-  " Neovim Diagnostics {{{
-  call s:h("DiagnosticError", { "fg": s:red })
-  call s:h("DiagnosticWarn", { "fg": s:yellow })
-  call s:h("DiagnosticInfo", { "fg": s:blue })
-  call s:h("DiagnosticHint", { "fg": s:cyan })
+  " Neovim Diagnostics
   call s:h("DiagnosticUnderlineError", { "fg": s:red, "gui": "underline", "cterm": "underline" })
   call s:h("DiagnosticUnderlineWarn", { "fg": s:yellow, "gui": "underline", "cterm": "underline" })
   call s:h("DiagnosticUnderlineInfo", { "fg": s:blue, "gui": "underline", "cterm": "underline" })
   call s:h("DiagnosticUnderlineHint", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
-  " }}}
+  "
 
-  " Neovim LSP (for versions < 0.5.1) {{{
+  " Neovim LSP (for versions < 0.5.1)
   hi link LspDiagnosticsDefaultError DiagnosticError
   hi link LspDiagnosticsDefaultWarning DiagnosticWarn
   hi link LspDiagnosticsDefaultInformation DiagnosticInfo
@@ -703,10 +699,10 @@ if has("nvim")
   hi link LspDiagnosticsUnderlineWarning DiagnosticUnderlineWarn
   hi link LspDiagnosticsUnderlineInformation DiagnosticUnderlineInfo
   hi link LspDiagnosticsUnderlineHint DiagnosticUnderlineHint
-  " }}}
+  "
 endif
 
-" }}}
+"
 
 " Must appear at the end of the file to work around this oddity:
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
