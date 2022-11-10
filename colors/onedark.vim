@@ -684,10 +684,10 @@ if has("nvim")
   "
 
   " Neovim Diagnostics
-  call s:h("DiagnosticUnderlineError", { "fg": s:red, "gui": "underline", "cterm": "underline" })
-  call s:h("DiagnosticUnderlineWarn", { "fg": s:yellow, "gui": "underline", "cterm": "underline" })
-  call s:h("DiagnosticUnderlineInfo", { "fg": s:blue, "gui": "underline", "cterm": "underline" })
-  call s:h("DiagnosticUnderlineHint", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
+  call s:h("DiagnosticUnderlineError", { "gui": "underline", "cterm": "underline" })
+  call s:h("DiagnosticUnderlineWarn", { "gui": "underline", "cterm": "underline" })
+  call s:h("DiagnosticUnderlineInfo", { "gui": "underline", "cterm": "underline" })
+  call s:h("DiagnosticUnderlineHint", { "gui": "underline", "cterm": "underline" })
   "
 
   " Neovim LSP (for versions < 0.5.1)
